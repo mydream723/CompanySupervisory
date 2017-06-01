@@ -1,0 +1,82 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <!-- 透明底色背景 -->
+    <style name="Theme.BackgroundTranslucent" parent="@android:Theme.Translucent">
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <!-- dialog标题 -->
+    <style name="font_dialog_title">
+        <item name="android:textSize">@dimen/tools_font_size_big</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+    <!-- dialog内容 -->
+    <style name="font_dialog_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+    <!-- dialog字体点击 -->
+    <style name="font_dialog_click">
+        <item name="android:textSize">@dimen/tools_font_size_small</item>
+        <item name="android:textColor">@drawable/tv_selector_function_dialog</item>
+    </style>
+    <!-- dialog按键样式 -->
+    <style name="button_dialog_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+
+    <!-- 功能字体（默认） -->
+    <style name="font_function_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@drawable/tv_selector_function</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <!-- 功能字体（小） -->
+    <style name="font_function_small">
+        <item name="android:textSize">@dimen/tools_font_size_small</item>
+        <item name="android:textColor">@drawable/tv_selector_function</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!-- 默认显示字体样式 -->
+    <style name="font_defalut">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_default</item>
+    </style>
+    <!-- 控件字体 -->
+    <style name="font_widget">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+
+    <!-- 按键样式 -->
+    <style name="button_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_default</item>
+    </style>
+
+    <!-- 蓝色按键样式 -->
+    <style name="button_bule">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@drawable/font_selector_bule</item>
+        <item name="android:background">@drawable/btn_selector_bule</item>
+    </style>
+
+</resources>

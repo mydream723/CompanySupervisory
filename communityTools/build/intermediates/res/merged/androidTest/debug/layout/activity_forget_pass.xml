@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background" >
+
+    <include
+        android:id="@+id/ic_forgetPassActivity_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        layout="@layout/include_subtitle" />
+    <!-- 手机号 -->
+
+    <LinearLayout
+        android:id="@+id/ll_forgetPassActivity_telphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ic_forgetPassActivity_title"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/tools_padding_big"
+        android:paddingRight="@dimen/tools_padding_big"
+        android:paddingTop="@dimen/tools_padding_big" >
+
+        <TextView
+            style="@style/font_defalut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_telphone" />
+
+        <EditText
+            android:id="@+id/et_forgetPassActivity_telphone"
+            style="@style/font_defalut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="@dimen/tools_padding_small"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+
+        <TextView
+            android:id="@+id/tv_forgetPassActivity__getCheck"
+            style="@style/font_function_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/tools_padding_default"
+            android:clickable="true"
+            android:text="@string/value_getCheckCode" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tools_line_size"
+        android:layout_below="@id/ll_forgetPassActivity_telphone"
+        android:layout_marginLeft="@dimen/tools_padding_big"
+        android:layout_marginRight="@dimen/tools_padding_big"
+        android:layout_marginTop="@dimen/tools_padding_small"
+        android:background="@color/tools_font_default" />
+    <!-- 验证码 -->
+
+    <LinearLayout
+        android:id="@+id/ll_forgetPassActivity_checkCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_forgetPassActivity_telphone"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/tools_padding_big"
+        android:paddingRight="@dimen/tools_padding_big"
+        android:paddingTop="@dimen/tools_padding_big" >
+
+        <TextView
+            style="@style/font_defalut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_checkCode" />
+
+        <EditText
+            android:id="@+id/et_forgetPassActivity_checkCode"
+            style="@style/font_defalut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="@dimen/tools_padding_small"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tools_line_size"
+        android:layout_below="@id/ll_forgetPassActivity_checkCode"
+        android:layout_marginLeft="@dimen/tools_padding_big"
+        android:layout_marginRight="@dimen/tools_padding_big"
+        android:layout_marginTop="@dimen/tools_padding_small"
+        android:background="@color/tools_font_default" />
+
+    <!-- 新密码 -->
+
+    <LinearLayout
+        android:id="@+id/ll_forgetPassActivity_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_forgetPassActivity_checkCode"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/tools_padding_big"
+        android:paddingRight="@dimen/tools_padding_big"
+        android:paddingTop="@dimen/tools_padding_big" >
+
+        <TextView
+            style="@style/font_defalut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_password" />
+
+        <EditText
+            android:id="@+id/et_forgetPassActivity_password"
+            style="@style/font_defalut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="@dimen/tools_padding_small"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tools_line_size"
+        android:layout_below="@id/ll_forgetPassActivity_password"
+        android:layout_marginLeft="@dimen/tools_padding_big"
+        android:layout_marginRight="@dimen/tools_padding_big"
+        android:layout_marginTop="@dimen/tools_padding_small"
+        android:background="@color/tools_font_default" />
+
+    <!-- 重复密码 -->
+
+    <LinearLayout
+        android:id="@+id/ll_forgetPassActivity_repass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_forgetPassActivity_password"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/tools_padding_big"
+        android:paddingRight="@dimen/tools_padding_big"
+        android:paddingTop="@dimen/tools_padding_big" >
+
+        <TextView
+            style="@style/font_defalut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_rePass" />
+
+        <EditText
+            android:id="@+id/et_forgetPassActivity_repass"
+            style="@style/font_defalut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="@dimen/tools_padding_small"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tools_line_size"
+        android:layout_below="@id/ll_forgetPassActivity_repass"
+        android:layout_marginLeft="@dimen/tools_padding_big"
+        android:layout_marginRight="@dimen/tools_padding_big"
+        android:layout_marginTop="@dimen/tools_padding_small"
+        android:background="@color/tools_font_default" />
+
+    <Button
+        android:id="@+id/bt_forgetPassActivity_submit"
+        style="@style/button_bule"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/tools_padding_default"
+        android:text="@string/forget_replace" />
+
+</RelativeLayout>

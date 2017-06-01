@@ -5,7 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import com.esint.communitytools.utils.CommunityHelper;
 import com.esint.provide.company.supervisory.R;
 import com.esint.provide.company.supervisory.adapter.TabAdapter;
 
@@ -29,6 +31,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         mViewPager.setAdapter(mTabAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(this);
+
+        Log.e(TAG, "is company logined " + (CommunityHelper.getInstance(mContext).getLoginedCompanyUser() != null));
     }
 
     private void initView(){

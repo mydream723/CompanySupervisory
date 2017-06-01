@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CompanySupervisory.iml" filepath="$PROJECT_DIR$/CompanySupervisory.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/communityTools/communityTools.iml" filepath="$PROJECT_DIR$/communityTools/communityTools.iml" />
     </modules>
   </component>
 </project>

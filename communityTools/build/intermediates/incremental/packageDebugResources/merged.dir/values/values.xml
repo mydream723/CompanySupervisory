@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#221A67</color>
+    <color name="spots_dialog_color">@android:color/holo_green_light</color>
+    <color name="tools_bg_dialog_login">#FFFFFF</color>
+    <color name="tools_button_stroke_white">#FFFFFF</color>
+    <color name="tools_font_alert">#FF0000</color>
+    <color name="tools_font_bule">#51A9EA</color>
+    <color name="tools_font_clicked">#D70B2A</color>
+    <color name="tools_font_default">#FFFFFF</color>
+    <color name="tools_font_widget">#000000</color>
+    <declare-styleable name="Dialog"><attr format="reference" name="DialogTitleAppearance"/><attr format="reference|string" name="DialogTitleText"/><attr format="reference|color" name="DialogSpotColor"/><attr format="integer" name="DialogSpotCount"/></declare-styleable>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="dialog_progress_margin">24dp</dimen>
+    <dimen name="dialog_progress_width">250dp</dimen>
+    <dimen name="dialog_spot_size">6dp</dimen>
+    <dimen name="dialog_title_margin">10dp</dimen>
+    <dimen name="tools_button_border">3dp</dimen>
+    <dimen name="tools_button_width">136dp</dimen>
+    <dimen name="tools_font_size_big">24sp</dimen>
+    <dimen name="tools_font_size_default">22sp</dimen>
+    <dimen name="tools_font_size_small">20sp</dimen>
+    <dimen name="tools_line_size">1dp</dimen>
+    <dimen name="tools_padding_big">24dp</dimen>
+    <dimen name="tools_padding_default">16dp</dimen>
+    <dimen name="tools_padding_small">8dp</dimen>
+    <dimen name="tools_pic_size_default">80dp</dimen>
+    <dimen name="tools_radius_button">8dp</dimen>
+    <dimen name="tools_radius_dialog">8dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">CommunityHome</string>
+    <string name="bindserviceDialog_bind">绑定运营商</string>
+    <string name="bindserviceDialog_bindFail">绑定失败</string>
+    <string name="bindserviceDialog_bindSuc">绑定成功</string>
+    <string name="bindserviceDialog_binding">正在绑定服务码，请稍后……</string>
+    <string name="bindserviceDialog_cancel">暂不绑定</string>
+    <string name="bindserviceDialog_hint">请输入运营商绑定码</string>
+    <string name="bindserviceDialog_noCode">请输入服务码</string>
+    <string name="bindserviceDialog_title">绑定运营商</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_noNetword">当前无网络连接，请检查网络。</string>
+    <string name="dialog_sure">确定</string>
+    <string name="dialog_title">注意</string>
+    <string name="dialog_updating">正在下载更新，请稍后……</string>
+    <string name="downloadDialog_cancel">暂不下载</string>
+    <string name="downloadDialog_fail">下载失败，请重新下载。</string>
+    <string name="downloadDialog_failPath">下载路径错误，请重新下载。</string>
+    <string name="downloadDialog_loading">正在下载应用，请稍候……</string>
+    <string name="downloadDialog_msg">暂无您所选功能模块，是否进行下载该功能模块？</string>
+    <string name="downloadDialog_pathError">请插入SD卡后再进行下载。</string>
+    <string name="downloadDialog_sure">确定下载</string>
+    <string name="forget_checkCode">验证码： </string>
+    <string name="forget_errorCompare">新密码与重复密码不符，请重新输入。</string>
+    <string name="forget_getChecking">正在获得验证码，请稍后……</string>
+    <string name="forget_noCheckCode">请输入手机号</string>
+    <string name="forget_noPass">请输入新密码</string>
+    <string name="forget_noRepadd">请输入重复密码</string>
+    <string name="forget_noTelphone">请输入手机号</string>
+    <string name="forget_password">新密码： </string>
+    <string name="forget_rePass">重复密码： </string>
+    <string name="forget_replace">重置密码</string>
+    <string name="forget_reseting">正在发送重置短信，请稍后……</string>
+    <string name="forget_telphone">手机号： </string>
+    <string name="forget_title">忘记密码 </string>
+    <string name="hello_world">Hello world!</string>
+    <string name="loginDialog_errorUsername">请输入正确的用户名</string>
+    <string name="loginDialog_forgetPass">忘记密码</string>
+    <string name="loginDialog_loading">正在登录，请稍后……</string>
+    <string name="loginDialog_login">立即登录</string>
+    <string name="loginDialog_loginSuc">登录成功</string>
+    <string name="loginDialog_noPassword">请输入密码</string>
+    <string name="loginDialog_noUsername">请输入用户名</string>
+    <string name="loginDialog_password">密码</string>
+    <string name="loginDialog_regist">注册</string>
+    <string name="loginDialog_username">用户名</string>
+    <string name="regist_checkCode">验证码：</string>
+    <string name="regist_errorCheckCode">请输入正确的验证码</string>
+    <string name="regist_errorPasswordCompared">密码确认错误，请重新填写。</string>
+    <string name="regist_errorTelphone">请输入正确的手机号</string>
+    <string name="regist_noCheckCode">请输入验证码</string>
+    <string name="regist_noPassword">请输入密码</string>
+    <string name="regist_noRePassword">请输入密码确认</string>
+    <string name="regist_noTelphone">请输入手机号</string>
+    <string name="regist_password">密码：</string>
+    <string name="regist_rePassword">密码确认：</string>
+    <string name="regist_submit">注册用户</string>
+    <string name="regist_telphone">手机号：</string>
+    <string name="regist_title">注册</string>
+    <string name="unbindserviceDialog_cancel">关闭</string>
+    <string name="unbindserviceDialog_title">解绑运营商</string>
+    <string name="unbindserviceDialog_unbind">接触绑定</string>
+    <string name="value_checkCode_part1">重新获得验证码( </string>
+    <string name="value_checkCode_part2"> )</string>
+    <string name="value_getCheckCode">获得手机验证码</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+
+
+
+
+
+
+
+
+
+
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="SpotsDialogDefault" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">正在加载…</item>
+        <item name="DialogSpotCount">5</item>
+    </style>
+    <style name="Theme.BackgroundTranslucent" parent="@android:Theme.Translucent">
+        <item name="android:windowBackground">@null</item>
+    </style>
+    <style name="button_bule">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@drawable/font_selector_bule</item>
+        <item name="android:background">@drawable/btn_selector_bule</item>
+    </style>
+    <style name="button_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_default</item>
+    </style>
+    <style name="button_dialog_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+    <style name="font_defalut">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_default</item>
+    </style>
+    <style name="font_dialog_click">
+        <item name="android:textSize">@dimen/tools_font_size_small</item>
+        <item name="android:textColor">@drawable/tv_selector_function_dialog</item>
+    </style>
+    <style name="font_dialog_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+    <style name="font_dialog_title">
+        <item name="android:textSize">@dimen/tools_font_size_big</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+    <style name="font_function_default">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@drawable/tv_selector_function</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="font_function_small">
+        <item name="android:textSize">@dimen/tools_font_size_small</item>
+        <item name="android:textColor">@drawable/tv_selector_function</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="font_widget">
+        <item name="android:textSize">@dimen/tools_font_size_default</item>
+        <item name="android:textColor">@color/tools_font_widget</item>
+    </style>
+</resources>

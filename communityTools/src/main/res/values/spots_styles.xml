@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- 自定義dialog默認樣式 -->
+    <style name="SpotsDialogDefault" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">正在加载…</item>
+        <item name="DialogSpotCount">5</item>
+    </style>
+
+</resources>

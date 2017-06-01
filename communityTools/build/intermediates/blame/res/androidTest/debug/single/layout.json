@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_regist.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_regist.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_spot.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_spot.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_login.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_login.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\include_subtitle.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\include_subtitle.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_unbindservice.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_unbindservice.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_bindservice.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_bindservice.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_forget_pass.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_forget_pass.xml"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_main.xml",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_main.xml"
+    }
+]

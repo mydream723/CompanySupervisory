@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <corners android:radius="@dimen/tools_radius_button" />
+
+    <padding
+        android:left="@dimen/tools_padding_small"
+        android:bottom="@dimen/tools_padding_small"
+        android:top="@dimen/tools_padding_small"
+        android:right="@dimen/tools_padding_small" />
+
+    <stroke
+        android:width="@dimen/tools_button_border"
+        android:color="@color/tools_button_stroke_white" />
+
+    <solid android:color="@android:color/transparent" />
+
+</shape>

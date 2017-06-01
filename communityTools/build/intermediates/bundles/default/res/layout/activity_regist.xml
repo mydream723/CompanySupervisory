@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/include_subtitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- 手机号 -->
+
+            <LinearLayout
+                android:id="@+id/ll_registActivity_telphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/tools_padding_big"
+                android:paddingRight="@dimen/tools_padding_big"
+                android:paddingTop="@dimen/tools_padding_big" >
+
+                <TextView
+                    style="@style/font_defalut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/regist_telphone" />
+
+                <EditText
+                    android:id="@+id/et_regist_phone"
+                    style="@style/font_defalut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="phone"
+                    android:padding="@dimen/tools_padding_small"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null" />
+
+                <TextView
+                    android:id="@+id/tv_registActivity_getCheckCode"
+                    style="@style/font_function_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/tools_padding_small"
+                    android:text="@string/value_getCheckCode" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tools_line_size"
+                android:layout_below="@id/ll_registActivity_telphone"
+                android:layout_marginLeft="@dimen/tools_padding_big"
+                android:layout_marginRight="@dimen/tools_padding_big"
+                android:layout_marginTop="@dimen/tools_padding_small"
+                android:background="@color/tools_font_default" />
+            <!-- 验证码 -->
+
+            <LinearLayout
+                android:id="@+id/ll_registActivity_checkCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_registActivity_telphone"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/tools_padding_big"
+                android:paddingRight="@dimen/tools_padding_big"
+                android:paddingTop="@dimen/tools_padding_big" >
+
+                <TextView
+                    style="@style/font_defalut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/regist_checkCode" />
+
+                <EditText
+                    android:id="@+id/et_regist_checkCode"
+                    style="@style/font_defalut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:padding="@dimen/tools_padding_small"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tools_line_size"
+                android:layout_below="@id/ll_registActivity_checkCode"
+                android:layout_marginLeft="@dimen/tools_padding_big"
+                android:layout_marginRight="@dimen/tools_padding_big"
+                android:layout_marginTop="@dimen/tools_padding_small"
+                android:background="@color/tools_font_default" />
+
+            <!-- 密码 -->
+
+            <LinearLayout
+                android:id="@+id/ll_registActivity_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_registActivity_checkCode"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/tools_padding_big"
+                android:paddingRight="@dimen/tools_padding_big"
+                android:paddingTop="@dimen/tools_padding_big" >
+
+                <TextView
+                    style="@style/font_defalut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/regist_password" />
+
+                <EditText
+                    android:id="@+id/et_regist_password"
+                    style="@style/font_defalut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/tools_padding_small"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tools_line_size"
+                android:layout_below="@id/ll_registActivity_password"
+                android:layout_marginLeft="@dimen/tools_padding_big"
+                android:layout_marginRight="@dimen/tools_padding_big"
+                android:layout_marginTop="@dimen/tools_padding_small"
+                android:background="@color/tools_font_default" />
+
+            <!-- 密码确认 -->
+
+            <LinearLayout
+                android:id="@+id/ll_registActivity_rePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_registActivity_password"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/tools_padding_big"
+                android:paddingRight="@dimen/tools_padding_big"
+                android:paddingTop="@dimen/tools_padding_big" >
+
+                <TextView
+                    style="@style/font_defalut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/regist_rePassword" />
+
+                <EditText
+                    android:id="@+id/et_regist_rePassword"
+                    style="@style/font_defalut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/tools_padding_small"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tools_line_size"
+                android:layout_below="@id/ll_registActivity_rePassword"
+                android:layout_marginLeft="@dimen/tools_padding_big"
+                android:layout_marginRight="@dimen/tools_padding_big"
+                android:layout_marginTop="@dimen/tools_padding_small"
+                android:background="@color/tools_font_default" />
+
+            <Button
+                android:id="@+id/bt_registActivity_regist"
+                style="@style/button_bule"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/tools_padding_default"
+                android:text="@string/regist_submit"
+                android:textSize="@dimen/tools_font_size_default" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

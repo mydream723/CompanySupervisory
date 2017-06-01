@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\main_background.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\main_background.png"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\btn_back_pre.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\btn_back_pre.png"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\button_bule_pre.9.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\button_bule_pre.9.png"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\btn_back.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\btn_back.png"
+    },
+    {
+        "merged": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\button_bule.9.png",
+        "source": "A:\\DevelopDocument\\AndroidStudioProjects\\CompanySupervisory\\communityTools\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\button_bule.9.png"
+    }
+]

@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 边距 -->
+    <dimen name="tools_padding_default">16dp</dimen>
+    <dimen name="tools_padding_small">8dp</dimen>
+    <dimen name="tools_padding_big">24dp</dimen>
+    <!-- 字体大小 -->
+    <dimen name="tools_font_size_default">22sp</dimen>
+    <dimen name="tools_font_size_big">24sp</dimen>
+    <dimen name="tools_font_size_small">20sp</dimen>
+    <!-- 图片大小 -->
+    <dimen name="tools_pic_size_default">80dp</dimen>
+    <!-- 细线 -->
+    <dimen name="tools_line_size">1dp</dimen>
+    <!-- dialog圆角 -->
+    <dimen name="tools_radius_dialog">8dp</dimen>
+    <!-- button圆角 -->
+    <dimen name="tools_radius_button">8dp</dimen>
+    <!-- button边框宽度 -->
+    <dimen name="tools_button_border">3dp</dimen>
+    <!-- button宽度 -->
+    <dimen name="tools_button_width">136dp</dimen>
+
+</resources>

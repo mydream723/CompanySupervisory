@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 主色调 -->
+    <color name="main_color">#221A67</color>
+    <!-- 字体颜色 -->
+    <color name="tools_font_default">#FFFFFF</color>
+    <color name="tools_font_widget">#000000</color>
+    <!-- 蓝色字体 -->
+    <color name="tools_font_bule">#51A9EA</color>
+    <!-- 提示字体颜色 -->
+    <color name="tools_font_alert">#FF0000</color>
+    <!-- 字体点击后颜色 -->
+    <color name="tools_font_clicked">#D70B2A</color>
+    <!-- dialog背景颜色 -->
+    <color name="tools_bg_dialog_login">#FFFFFF</color>
+	<!-- button白色边框 -->
+	<color name="tools_button_stroke_white">#FFFFFF</color>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- dialog 默認顏色 -->
+    <color name="spots_dialog_color">@android:color/holo_green_light</color>
+
+</resources>

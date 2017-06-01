@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_background_login"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/tools_padding_small" >
+
+    <TextView
+        style="@style/font_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="LOGO" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/et_loginDialog_username"
+            style="@style/font_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tools_padding_default"
+            android:hint="@string/loginDialog_username"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/et_loginDialog_password"
+            style="@style/font_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tools_padding_small"
+            android:hint="@string/loginDialog_password"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/tools_padding_small"
+            android:paddingLeft="@dimen/tools_padding_default"
+            android:paddingRight="@dimen/tools_padding_default"
+            android:paddingTop="@dimen/tools_padding_small" >
+
+            <TextView
+                android:id="@+id/tv_loginDialog_forget"
+                style="@style/font_dialog_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/loginDialog_forgetPass" />
+
+            <TextView
+                android:id="@+id/tv_loginDialog_regist"
+                style="@style/font_dialog_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/loginDialog_regist" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_loginDialog_login"
+        style="@style/button_dialog_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loginDialog_login" />
+
+</LinearLayout>
