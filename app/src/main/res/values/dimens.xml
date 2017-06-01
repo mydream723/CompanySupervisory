@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_default">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_big">24dp</dimen>
+
+    <dimen name="font_default">16sp</dimen>
+    <dimen name="font_small">13sp</dimen>
+    <dimen name="font_big">19sp</dimen>
+
+    <dimen name="size_icon_type">48dp</dimen>
+</resources>

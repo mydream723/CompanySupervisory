@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--默认字体-->
+    <style name="font_default">
+        <item name="android:textSize">@dimen/font_default</item>
+        <item name="android:textColor">@color/font_default</item>
+    </style>
+    <!--控件字体-->
+    <style name="font_widget">
+        <item name="android:textSize">@dimen/font_default</item>
+        <item name="android:textColor">@color/font_widget</item>
+    </style>
+    <!--標題-->
+    <style name="font_title">
+        <item name="android:textSize">@dimen/font_big</item>
+        <item name="android:textColor">@color/font_widget</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/font_big</item>
+    </style>
+</resources>

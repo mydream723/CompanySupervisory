@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CompanySupervisory</string>
+
+    <string name="tab_unRead">未读信息</string>
+    <string name="tab_readed">已读信息</string>
+
+    <string name="title_orderInfo">订单信息</string>
+    <string name="item_order_type">订单类别：</string>
+    <string name="item_order_num">订单编号：</string>
+    <string name="item_order_time">订单日期：</string>
+
+    <string name="item_orderType_shop">商城订单</string>
+    <string name="item_orderType_social">社工订单</string>
+    <string name="item_orderType_call">呼叫服务</string>
+    <string name="item_orderType_defalut">订单</string>
+</resources>
