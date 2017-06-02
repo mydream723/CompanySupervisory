@@ -2,14 +2,16 @@ package com.esint.provide.company.supervisory.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
+import com.esint.communitytools.bean.CCompanyUser;
 import com.esint.communitytools.utils.CommunityHelper;
 import com.esint.provide.company.supervisory.R;
 import com.esint.provide.company.supervisory.adapter.TabAdapter;
+import com.esint.provide.company.supervisory.service.PushCoreService;
+import com.esint.provide.company.supervisory.service.PushService;
+import com.igexin.sdk.PushManager;
 
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener{
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -32,7 +34,15 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(this);
 
-        Log.e(TAG, "is company logined " + (CommunityHelper.getInstance(mContext).getLoginedCompanyUser() != null));
+        PushManager.getInstance().initialize(this.getApplicationContext(), PushCoreService.class);
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushService.class);
+        //获得登陆账号
+        if(CommunityHelper.getInstance(mContext).getLoginedCompanyUser() != null){
+            CCompanyUser companyUser = CommunityHelper.getInstance(mContext).getLoginedCompanyUser();
+            PushManager.getInstance().bindAlias(mContext, companyUser.getBindCode());
+        }
+
+
     }
 
     private void initView(){

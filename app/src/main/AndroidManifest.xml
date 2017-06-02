@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.esint.provide.company.supervisory">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -9,18 +10,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_orderInfo"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_orderInfo"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            >
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--推送服务-->
+        <service android:name=".service.PushService" />
+        <!--推送核心服务-->
+        <service
+            android:name=".service.PushCoreService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+        <!-- 账号统一 -->
+        <meta-data
+            android:name="ACCOUNT_AUTHOR"
+            android:value="QLSzumx6eQH5nw4KssaK/RaeqqmZa03ECfsmdyAU2+oq6iYUTibDNNQ6Bz1Fyl0bCbDkiy3E7IaYIRmhoCJfKGQfGe5GRxfZwz7HhgkkIbqxYISJ9BPhzxf36wyHFTumr3hu1sj233ant3e16K97Qc90o89PHCb+KIhOHgAMY9s=" />
     </application>
 
 </manifest>
