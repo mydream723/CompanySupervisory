@@ -57,7 +57,7 @@ public class DetailDialog extends BaseDialog implements View.OnClickListener{
                             if(resultJson.getMark().equals(WebConstances.RESULT_MARK_OK)){
                                 loadingView.setVisibility(View.GONE);
                                 contentView.setVisibility(View.VISIBLE);
-
+                                setValue(mInfo);
 
                                 break;
                             }
@@ -76,10 +76,11 @@ public class DetailDialog extends BaseDialog implements View.OnClickListener{
         }
     };
 
-    public DetailDialog(Context context, MessageInfo info){
+    public DetailDialog(Context context, MessageInfo info, int type){
         super(context);
         mContext = context;
         mInfo = info;
+        orderType = type;
     }
 
     @Override
@@ -94,13 +95,14 @@ public class DetailDialog extends BaseDialog implements View.OnClickListener{
             contentView.setVisibility(View.GONE);
             loadingView.setVisibility(View.VISIBLE);
             showLoading(loadingView, mContext.getResources().getString(R.string.loading_message_loading));
+            updateMessage();
         }else{
             loadingView.setVisibility(View.GONE);
             contentView.setVisibility(View.VISIBLE);
             setValue(mInfo);
         }
 
-        updateMessage();
+
     }
     protected void initData() {
     }

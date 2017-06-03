@@ -1,16 +1,23 @@
 package com.esint.provide.company.supervisory.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.esint.communitytools.bean.CCompanyUser;
 import com.esint.communitytools.utils.CommunityHelper;
 import com.esint.provide.company.supervisory.R;
 import com.esint.provide.company.supervisory.adapter.TabAdapter;
+import com.esint.provide.company.supervisory.fragment.UnReadFragment;
 import com.esint.provide.company.supervisory.service.PushCoreService;
 import com.esint.provide.company.supervisory.service.PushService;
+import com.esint.provide.company.supervisory.utils.Constances;
 import com.igexin.sdk.PushManager;
 
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener{
@@ -20,7 +27,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
 
     private ViewPager mViewPager;
     private TabAdapter mTabAdapter;
-
+    /**
+     * 企业用户
+     */
+    private CCompanyUser companyUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +48,13 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushService.class);
         //获得登陆账号
         if(CommunityHelper.getInstance(mContext).getLoginedCompanyUser() != null){
-            CCompanyUser companyUser = CommunityHelper.getInstance(mContext).getLoginedCompanyUser();
+            companyUser = CommunityHelper.getInstance(mContext).getLoginedCompanyUser();
             PushManager.getInstance().bindAlias(mContext, companyUser.getBindCode());
+            Log.e(TAG,"" + companyUser.getBindCode());
+        }else{
+            Log.e(TAG,"NO ACCOUNT");
         }
+
 
 
     }
@@ -84,4 +98,15 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
+    public String getCompanyUserCode(){
+        if(null != companyUser)
+        return companyUser.getBindCode();
+        else
+            return "";
+    }
+
+
+
+
 }

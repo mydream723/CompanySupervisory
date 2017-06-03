@@ -1,5 +1,6 @@
 package com.esint.provide.company.supervisory.fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.esint.provide.company.supervisory.R;
 import com.esint.provide.company.supervisory.activity.BaseActivity;
+import com.esint.provide.company.supervisory.activity.MainActivity;
 import com.esint.provide.company.supervisory.adapter.ItemAdapter;
 import com.esint.provide.company.supervisory.bean.JsonMessage;
 import com.esint.provide.company.supervisory.bean.MessageBean;
@@ -46,6 +48,8 @@ public class ReadedFragment extends BaseFragment implements SwipeRefreshLayout.O
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private LinearLayoutManager mLinearLayoutManager;
     private int lastVisibleItem;
+
+    private String companyUserCode;
 
     private int pageNum = 1;
     /**
@@ -103,6 +107,13 @@ public class ReadedFragment extends BaseFragment implements SwipeRefreshLayout.O
             }
         }
     };
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        MainActivity activity = (MainActivity) context;
+        companyUserCode = activity.getCompanyUserCode();
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -195,7 +206,7 @@ public class ReadedFragment extends BaseFragment implements SwipeRefreshLayout.O
 
         Map<String, String> params = new HashMap<String, String>();
         params.put(WebConstances.PARAMS_GETMESSAGE_STATUS, "1");
-        params.put(WebConstances.PARAMS_GETMESSAGE_CODE, "331");
+        params.put(WebConstances.PARAMS_GETMESSAGE_CODE, companyUserCode);
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGENUM, pageNum + "");
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGECOUNT, pageCount + "");
         OKHttpUtils.getInstance().postRequest(WebConstances.BASE_URL + WebConstances.URL_MESSAGE_GET, params, mHandler, WebConstances.WEBFLAG_GETMESSAGE);
@@ -203,7 +214,7 @@ public class ReadedFragment extends BaseFragment implements SwipeRefreshLayout.O
 
     @Override
     public void onItemClick(View v, final int pos) {
-        DetailDialog dialog = new DetailDialog(mContext, infoList.get(pos));
+        DetailDialog dialog = new DetailDialog(mContext, infoList.get(pos), 1);
         dialog.setCanceledOnTouchOutside(false);
 
         dialog.show();

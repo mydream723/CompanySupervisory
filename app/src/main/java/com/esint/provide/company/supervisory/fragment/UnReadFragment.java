@@ -1,7 +1,11 @@
 package com.esint.provide.company.supervisory.fragment;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,6 +21,7 @@ import android.view.ViewGroup;
 
 import com.esint.provide.company.supervisory.R;
 import com.esint.provide.company.supervisory.activity.BaseActivity;
+import com.esint.provide.company.supervisory.activity.MainActivity;
 import com.esint.provide.company.supervisory.adapter.ItemAdapter;
 import com.esint.provide.company.supervisory.bean.JsonMessage;
 import com.esint.provide.company.supervisory.bean.MessageBean;
@@ -48,6 +53,8 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private LinearLayoutManager mLinearLayoutManager;
     private int lastVisibleItem;
+
+    private String companyUserCode;
 
     private int pageNum = 1;
     /**
@@ -107,9 +114,21 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
     };
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        MainActivity activity = (MainActivity) context;
+        companyUserCode = activity.getCompanyUserCode();
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initData();
+
+        RefreshBroadcastReceiver receiver = new RefreshBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constances.ACTION_ONREFRESH);
+        mContext.registerReceiver(receiver,filter);
     }
 
     @Nullable
@@ -235,7 +254,7 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
 
         Map<String, String> params = new HashMap<String, String>();
         params.put(WebConstances.PARAMS_GETMESSAGE_STATUS, "0");
-        params.put(WebConstances.PARAMS_GETMESSAGE_CODE, "331");
+        params.put(WebConstances.PARAMS_GETMESSAGE_CODE, companyUserCode);
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGENUM, pageNum + "");
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGECOUNT, pageCount + "");
         OKHttpUtils.getInstance().postRequest(WebConstances.BASE_URL + WebConstances.URL_MESSAGE_GET, params, mHandler, WebConstances.WEBFLAG_GETMESSAGE);
@@ -243,15 +262,35 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
 
     @Override
     public void onItemClick(View v, final int pos) {
-        DetailDialog dialog = new DetailDialog(mContext, infoList.get(pos));
+        DetailDialog dialog = new DetailDialog(mContext, infoList.get(pos), 0);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 infoList.remove(pos);
                 mAdapter.notifyDataSetChanged();
+                if(infoList.size() != 0){
+                    loadingView.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                }else{
+                    loadingView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                    showResult(loadingView, mContext.getResources().getString(R.string.loading_message_empty));
+                }
             }
         });
         dialog.show();
+    }
+
+    class RefreshBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.e(TAG, "RefreshBroadcastReceiver");
+            if(intent.getAction().equals(Constances.ACTION_ONREFRESH)){
+                Log.e(TAG, "ONREFRESH");
+                onRefresh();
+            }
+
+        }
     }
 }

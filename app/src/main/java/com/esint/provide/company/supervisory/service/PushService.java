@@ -5,12 +5,15 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Message;
 import android.util.Log;
 
 import com.esint.provide.company.supervisory.R;
+import com.esint.provide.company.supervisory.SupervisoryApplication;
 import com.esint.provide.company.supervisory.activity.MainActivity;
 import com.esint.provide.company.supervisory.bean.NotificationInfo;
 import com.esint.provide.company.supervisory.bean.OrderInfo;
+import com.esint.provide.company.supervisory.utils.Constances;
 import com.esint.provide.company.supervisory.utils.JsonUtils;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.PushManager;
@@ -57,6 +60,7 @@ public class PushService extends GTIntentService {
             try {
                 NotificationInfo info = JsonUtils.getInstance().getNotification(data);
                 createNotification(info);
+                sendMessage();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,5 +113,11 @@ public class PushService extends GTIntentService {
         notify.flags |= Notification.FLAG_AUTO_CANCEL;
         NotificationManager manager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(1, notify);
+    }
+
+    private void sendMessage() {
+        Intent intent = new Intent();
+        intent.setAction(Constances.ACTION_ONREFRESH);
+        sendBroadcast(intent);
     }
 }
