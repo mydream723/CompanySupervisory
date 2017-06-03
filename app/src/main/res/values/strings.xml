@@ -8,9 +8,18 @@
     <string name="item_order_type">订单类别：</string>
     <string name="item_order_num">订单编号：</string>
     <string name="item_order_time">订单日期：</string>
+    <string name="item_order_detail">订单提醒：</string>
 
     <string name="item_orderType_shop">商城订单</string>
     <string name="item_orderType_social">社工订单</string>
     <string name="item_orderType_call">呼叫服务</string>
     <string name="item_orderType_defalut">订单</string>
+
+    <string name="loading_message_empty">暂无订单信息</string>
+    <string name="loading_message_loading">正在加载，请稍后……</string>
+    <string name="toast_date_noMore">没有更多的订单信息了</string>
+    <string name="toast_date_error">无法查看该信息</string>
+    <string name="toast_network_error">网络连接错误，请检查您的网络连接。</string>
+
+    <string name="dialog_order_title">订单提醒</string>
 </resources>

@@ -8,6 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.esint.provide.company.supervisory.R;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 /**
  * Created by MX on 2017/6/1.
@@ -35,4 +40,32 @@ public class BaseFragment extends Fragment {
     protected void initEvent(){
 
     }
+
+    protected void showLoading(View loadingView, String message){
+        ImageView resultImageView = (ImageView)loadingView.findViewById(R.id.iv_loadingView_icon);
+        SpinKitView loadingIcon = (SpinKitView)loadingView.findViewById(R.id.skv_loadingView_loading);
+        TextView loadingTextView = (TextView)loadingView.findViewById(R.id.tv_loadingView_message);
+
+        resultImageView.setVisibility(View.GONE);
+        loadingIcon.setVisibility(View.VISIBLE);
+        loadingTextView.setVisibility(View.VISIBLE);
+
+        loadingTextView.setText(message);
+
+    }
+
+    protected void showResult(View loadingView, String message){
+        ImageView resultImageView = (ImageView)loadingView.findViewById(R.id.iv_loadingView_icon);
+        SpinKitView loadingIcon = (SpinKitView)loadingView.findViewById(R.id.skv_loadingView_loading);
+        TextView loadingTextView = (TextView)loadingView.findViewById(R.id.tv_loadingView_message);
+
+        resultImageView.setVisibility(View.VISIBLE);
+        loadingIcon.setVisibility(View.GONE);
+        loadingTextView.setVisibility(View.VISIBLE);
+
+        loadingTextView.setText(message);
+    }
+
+
+
 }

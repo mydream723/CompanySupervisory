@@ -4,8 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_readedFragment_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_readedFragment_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_readedFragment_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <include
+                android:id="@+id/ic_readedFragment_loading"
+                layout="@layout/include_loading"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

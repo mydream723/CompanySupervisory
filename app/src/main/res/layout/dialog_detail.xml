@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:padding="@dimen/padding_default">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_default"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/font_big"
+        android:textColor="@color/font_default"
+        android:text="@string/dialog_order_title"
+        />
+    <Button
+        android:id="@+id/bt_detailActivity_close"
+        android:layout_width="@dimen/size_btn_close"
+        android:layout_height="@dimen/size_btn_close"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_selector_close" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rl_detailActivity_content"
+        android:layout_below="@id/bt_detailActivity_close"
+        android:padding="@dimen/padding_default">
+
+        <ImageView
+            android:id="@+id/iv_detailActivity_type"
+            android:layout_width="@dimen/size_icon_type"
+            android:layout_height="@dimen/size_icon_type"
+            android:src="@drawable/ic_type_default" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_small"
+            android:layout_marginStart="@dimen/padding_default"
+            android:layout_toEndOf="@id/iv_detailActivity_type"
+            android:orientation="vertical">
+            <!--类别-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_order_type" />
+
+                <TextView
+                    android:id="@+id/tv_detailActivity_orderType"
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_small" />
+            </LinearLayout>
+
+            <!--类别-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_order_time" />
+
+                <TextView
+                    android:id="@+id/tv_detailActivity_orderTime"
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_small" />
+            </LinearLayout>
+
+            <!--订单提醒-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_order_detail" />
+
+                <TextView
+                    android:id="@+id/tv_detailActivity_orderMessage"
+                    style="@style/font_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_small" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <include
+        android:id="@+id/ic_detailActivity_loading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bt_detailActivity_close"
+        />
+
+</RelativeLayout>

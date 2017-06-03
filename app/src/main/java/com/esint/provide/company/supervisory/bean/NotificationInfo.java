@@ -21,6 +21,7 @@ public class NotificationInfo {
      * 运营商码
      */
     private String com_code;
+    private String e_type_name;
     /**
      * 运营商id
      */
@@ -64,5 +65,13 @@ public class NotificationInfo {
 
     public void setCom_id(String com_id) {
         this.com_id = com_id;
+    }
+
+    public String getE_type_name() {
+        return e_type_name;
+    }
+
+    public void setE_type_name(String e_type_name) {
+        this.e_type_name = e_type_name;
     }
 }

@@ -1,5 +1,7 @@
 package com.esint.provide.company.supervisory.fragment;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,19 +11,24 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.esint.provide.company.supervisory.R;
+import com.esint.provide.company.supervisory.activity.BaseActivity;
 import com.esint.provide.company.supervisory.adapter.ItemAdapter;
-import com.esint.provide.company.supervisory.bean.OrderInfo;
+import com.esint.provide.company.supervisory.bean.JsonMessage;
+import com.esint.provide.company.supervisory.bean.MessageBean;
+import com.esint.provide.company.supervisory.bean.MessageInfo;
+import com.esint.provide.company.supervisory.dialog.DetailDialog;
 import com.esint.provide.company.supervisory.utils.Constances;
+import com.esint.provide.company.supervisory.utils.JsonUtils;
 import com.esint.provide.company.supervisory.utils.OKHttpUtils;
 import com.esint.provide.company.supervisory.utils.WebConstances;
 import com.esint.provide.company.supervisory.view.DividerItemDecoration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,10 +38,10 @@ import java.util.Map;
  * Created by MX on 2017/6/1.
  */
 
-public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, ItemAdapter.ItemOnClickListener {
     private static final String TAG = UnReadFragment.class.getSimpleName();
     //数据对象
-    private List<OrderInfo> infoList;
+    private List<MessageInfo> infoList;
     private RecyclerView mRecyclerView;
     private ItemAdapter mAdapter;
     //刷新
@@ -43,17 +50,57 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
     private int lastVisibleItem;
 
     private int pageNum = 1;
+    /**
+     * 接口返回的总页数
+     */
+    private int allPageNum = 0;
+    /**
+     * 接口返回的当前页数
+     */
+    private int nowPageNum = 1;
 
-    private Handler mHandler = new Handler(Looper.getMainLooper()){
+    private View loadingView;
+
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case OKHttpUtils.WEBFLAG_ERROR:
                     Log.e(TAG, "WEBFLAG_ERROR");
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    BaseActivity.showToast(mContext, mContext.getResources().getString(R.string.toast_network_error));
                     break;
                 case WebConstances.WEBFLAG_GETMESSAGE:
                     Log.e(TAG, "WEBFLAG_GETMESSAGE:" + msg.obj.toString());
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    try {
+                        JsonMessage messageJson = JsonUtils.getInstance().getMessgae(msg.obj.toString());
+                        if (null != messageJson && messageJson.getMark().equals(WebConstances.RESULT_MARK_OK)) {
+                            // 返回值正确
+                            MessageBean messageBean = messageJson.getMsg();
+                            allPageNum = Integer.valueOf(messageBean.getPage_all());
+                            nowPageNum = Integer.valueOf(messageBean.getPage_now());
+                            List<MessageInfo> infos = messageBean.getMesInfo();
+                            if (null != infos && infos.size() > 0 && pageNum <= nowPageNum) {
+                                pageNum++;
+                                infoList.addAll(infos);
+                                mAdapter.notifyDataSetChanged();
+                            }
+
+
+                        }
+                    } catch (Exception e) {
+
+                    }
+                    if(infoList.size() != 0){
+                        loadingView.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                    }else{
+                        loadingView.setVisibility(View.VISIBLE);
+                        mRecyclerView.setVisibility(View.GONE);
+                        showResult(loadingView, mContext.getResources().getString(R.string.loading_message_empty));
+                    }
                     break;
             }
         }
@@ -76,13 +123,16 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,
                 DividerItemDecoration.VERTICAL_LIST));
-
+        // 设置下拉进度的背景颜色，默认就是白色的
+        mSwipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
+        // 设置下拉进度的主题颜色
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
         // 这句话是为了，第一次进入页面的时候显示加载进度条
-        mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
-                        .getDisplayMetrics()));
-
-
+//        mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
+//                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+//                        .getDisplayMetrics()));
+        mSwipeRefreshLayout.setRefreshing(true);
+        getMessages(pageNum, Constances.PAGECOUNT);
 
 
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -93,9 +143,14 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
                         && lastVisibleItem + 1 == mAdapter.getItemCount()) {
-                    mSwipeRefreshLayout.setRefreshing(true);
-                    // 此处在现实项目中，请换成网络请求数据代码，sendRequest .....
-//                    handler.sendEmptyMessageDelayed(0, 3000);
+
+                    Log.e(TAG, "NOW PAGE NUM " + nowPageNum + "; all page num" + allPageNum);
+                    if (nowPageNum < allPageNum) {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        getMessages(pageNum, Constances.PAGECOUNT);
+                    } else {
+                        BaseActivity.showToast(mContext, mContext.getResources().getString(R.string.toast_date_noMore));
+                    }
                 }
             }
 
@@ -110,18 +165,18 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
         return view;
     }
 
-    private void initView(View view){
-        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.srl_unReadFragment_refresh);
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.rv_unReadFragment_list);
+    private void initView(View view) {
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.srl_unReadFragment_refresh);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_unReadFragment_list);
+
+        loadingView = view.findViewById(R.id.ic_unReadFragment_loading);
     }
 
     @Override
     protected void initData() {
         super.initData();
         mContext = getActivity();
-
-        setTestData();
-
+        infoList = new ArrayList<MessageInfo>();
         mAdapter = new ItemAdapter(mContext, infoList);
     }
 
@@ -129,45 +184,40 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
     protected void initEvent() {
         super.initEvent();
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mAdapter.setOnClickListener(this);
     }
 
-    private void setTestData(){
-        infoList = new ArrayList<OrderInfo>();
+    private void setTestData() {
+        infoList = new ArrayList<MessageInfo>();
 
-        OrderInfo info = new OrderInfo();
-        info.setOrderType(1);
-        info.setOrderNum("20170517196547");
-        info.setOrderTime("2017年5月17日 12:24:32");
+        MessageInfo info = new MessageInfo();
+        info.setE_type("商城订单");
+        info.setE_add_time("2017年5月17日 12:24:32");
         infoList.add(info);
 
-        info = new OrderInfo();
-        info.setOrderType(1);
-        info.setOrderNum("20170517991254");
-        info.setOrderTime("2017年5月17日 14:20:52");
+        info = new MessageInfo();
+        info.setE_type("商城订单");
+        info.setE_add_time("2017年5月17日 14:20:52");
         infoList.add(info);
 
-        info = new OrderInfo();
-        info.setOrderType(2);
-        info.setOrderNum("20170524196547");
-        info.setOrderTime("2017年5月24日 14:26:02");
+        info = new MessageInfo();
+        info.setE_type("社工订单");
+        info.setE_add_time("2017年5月24日 14:26:02");
         infoList.add(info);
 
-        info = new OrderInfo();
-        info.setOrderType(3);
-        info.setOrderNum("20170521132584");
-        info.setOrderTime("2017年5月21日 14:30:56");
+        info = new MessageInfo();
+        info.setE_type("呼叫服务");
+        info.setE_add_time("2017年5月21日 14:30:56");
         infoList.add(info);
 
-        info = new OrderInfo();
-        info.setOrderType(3);
-        info.setOrderNum("20170522365847");
-        info.setOrderTime("2017年5月22日 09:10:32");
+        info = new MessageInfo();
+        info.setE_type("呼叫服务");
+        info.setE_add_time("2017年5月22日 09:10:32");
         infoList.add(info);
 
-        info = new OrderInfo();
-        info.setOrderType(1);
-        info.setOrderNum("20170523196547");
-        info.setOrderTime("2017年5月23日 10:54:24");
+        info = new MessageInfo();
+        info.setE_type("商城订单");
+        info.setE_add_time("2017年5月23日 10:54:24");
         infoList.add(info);
 
 
@@ -175,16 +225,33 @@ public class UnReadFragment extends BaseFragment implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
+        pageNum = 1;
+        infoList.clear();
         getMessages(pageNum, Constances.PAGECOUNT);
     }
 
-    private void getMessages(int pageNum, int pageCount){
+    private void getMessages(int pageNum, int pageCount) {
+        Log.e(TAG, "pageNum is " + pageNum);
+
         Map<String, String> params = new HashMap<String, String>();
-        params.put(WebConstances.PARAMS_GETMESSAGE_STATUS, 1 + "");
+        params.put(WebConstances.PARAMS_GETMESSAGE_STATUS, "0");
         params.put(WebConstances.PARAMS_GETMESSAGE_CODE, "331");
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGENUM, pageNum + "");
         params.put(WebConstances.PARAMS_GETMESSAGE_PAGECOUNT, pageCount + "");
-        OKHttpUtils.getInstance().postRequest(WebConstances.BASE_URL + WebConstances.URL_MESSAGE_GET, params,mHandler, WebConstances.WEBFLAG_GETMESSAGE );
+        OKHttpUtils.getInstance().postRequest(WebConstances.BASE_URL + WebConstances.URL_MESSAGE_GET, params, mHandler, WebConstances.WEBFLAG_GETMESSAGE);
     }
 
+    @Override
+    public void onItemClick(View v, final int pos) {
+        DetailDialog dialog = new DetailDialog(mContext, infoList.get(pos));
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                infoList.remove(pos);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+        dialog.show();
+    }
 }

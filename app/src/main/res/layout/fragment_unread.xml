@@ -9,10 +9,20 @@
         android:id="@+id/srl_unReadFragment_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_unReadFragment_list"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_unReadFragment_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <include
+                android:id="@+id/ic_unReadFragment_loading"
+                layout="@layout/include_loading"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

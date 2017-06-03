@@ -43,4 +43,6 @@ dependencies {
     compile project(':communityTools')
     //个推
     compile 'com.getui:sdk:2.10.2.0'
+    //加载动画
+    compile 'com.github.ybq:Android-SpinKit:1.1.0'
 }

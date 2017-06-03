@@ -18,7 +18,10 @@ allprojects {
         //个推maven
         maven{
             url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
+
         }
+        //加载动画
+        maven { url "https://jitpack.io" }
     }
 }
 

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esint.provide.company.supervisory.R;
+import com.esint.provide.company.supervisory.bean.MessageInfo;
 import com.esint.provide.company.supervisory.bean.OrderInfo;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,11 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
     private Context mContext;
-    private List<OrderInfo> orderList;
+    private List<MessageInfo> orderList;
 
     private ItemOnClickListener mListener;
 
-    public ItemAdapter(Context context, List<OrderInfo> orderList) {
+    public ItemAdapter(Context context, List<MessageInfo> orderList) {
         mContext = context;
         this.orderList = orderList;
     }
@@ -49,34 +50,30 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(ItemAdapter.MyViewHolder holder, int position) {
-        int type = orderList.get(position).getOrderType();
+        String type = orderList.get(position).getE_type();
         String typeName = "";
         int typeImg = 0;
+        typeName =  orderList.get(position).getE_type_name();
         switch (type){
             case OrderInfo.TYPE_SHOP:
                 //商铺
                 typeImg = R.drawable.ic_type_shop;
-                typeName = mContext.getResources().getString(R.string.item_orderType_shop);
                 break;
             case OrderInfo.TYPE_SOCIAL:
                 //社工
                 typeImg = R.drawable.ic_type_social;
-                typeName = mContext.getResources().getString(R.string.item_orderType_social);
                 break;
             case OrderInfo.TYPE_CALL:
                 //呼叫
                 typeImg = R.drawable.ic_type_call;
-                typeName = mContext.getResources().getString(R.string.item_orderType_call);
                 break;
             default:
                 typeImg = R.drawable.ic_type_default;
-                typeName = mContext.getResources().getString(R.string.item_orderType_defalut);
                 break;
         }
         Picasso.with(mContext).load(typeImg).placeholder(R.drawable.ic_type_default).error(R.drawable.ic_error).into(holder.typeImageView);
         holder.typeTextView.setText(typeName);
-        holder.numTextView.setText(orderList.get(position).getOrderNum());
-        holder.timeTextView.setText(orderList.get(position).getOrderTime());
+        holder.timeTextView.setText(orderList.get(position).getE_add_time());
         holder.itemView.setOnClickListener(new ItemClick(holder.getLayoutPosition()));
     }
 
